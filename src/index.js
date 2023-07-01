@@ -28,63 +28,36 @@ if (time < 10) {
 }
 // console.log(time);
 
-todaysday.innerHTML = `${day}  ${hour}:${time}`;
+// todaysday.innerHTML = `${day}  ${hour}:${time}`;
 
-// function searchCountry(response, event) {
+function getWeather(response) {
+  console.log(response);
+  let cityInput = document.querySelector(".city-input");
+  let weatherCondition = document.querySelector(".weather");
+  let temp = document.querySelector(".temp")
+  let humidityData = document.querySelector(".humidity-data");
+  cityInput.innerHTML = response.data.city;
+   weatherCondition .innerHTML= response. data.condition.description
+   temp.innerHTML =  Math.round(response.data. temperature.current)
+  humidityData.innerHTML = response.data.temperature.humidity;
+}
+function searchWeather(event) {
+event.preventDefault()
+let textInput = document.querySelector("#text-input");
+let city = textInput.value
+let apiKey = "f62d01b34c58e90t15caf7a143042b5o";
+let endPoint =
+  `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+   axios.get(endPoint).then(getWeather)
+}
+
+
+ let searchForm = document.querySelector(".search-form");
+ searchForm.addEventListener("submit", searchWeather)
+ console.log(searchForm)
+// function currentLocation(event) {
 //   event.preventDefault();
-//   console.log(response)
-//   let search = document.querySelector(".input-text");
-//   let country = document.querySelector(".country");
-//   country.innerHTML = `${search.value}`
-//   ;
-//   let apiKey = "b9ba0314a93083136d968577c718e31d";
-//   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=${apiKey}&=metric
-//   `
-//   console.log(apiUrl)
-//   axios.get(apiUrl).then(searchCountry)
+//   navigator.geolocation.getCurrentPosition(currentLoc);
 // }
-function showWeather(response) {
-  console.log(response.data);
-  let temperature = Math.round(response.data.main.temp);
-  let temp = document.querySelector(".temp");
-  temp.innerHTML = `${temperature}℃`;
-  let weatherDes = document.querySelector(".weather");
-  weatherDes.innerHTML = response.data.weather[0].description;
 
-  let search = document.querySelector(".input-text");
-  let country = document.querySelector(".country");
-  country.innerHTML = search.value;
-  console.log(response.data.weather[0].description);
-}
-// let country =document.quySelector(".country")
-let weatherForm = document.querySelector(".weather-form");
-weatherForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  let search = document.querySelector(".input-text");
-  let country = document.querySelector(".country");
-  console.log(country);
-  // let searchValue = search.value;
-  country = search.value;
-  let apiKey = "b9ba0314a93083136d968577c718e31d";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
-});
-function currentLoc(position) {
-  console.log(position);
-  let apiKey = "b9ba0314a93083136d968577c718e31d";
-  let endPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-  console.log(position);
-  axios.get(endPoint).then(showWeather);
-}
-function currentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(currentLoc);
-}
-
-let current = document.querySelector(".current");
-current.addEventListener("click", currentLocation);
-
-// function currentWeather(event) {
-//   let currentBtn =
-
-// }

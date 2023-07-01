@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,30 +19,42 @@
         <div class="row">
           <div class="col-5">
             <ul class="list-unstyled">
-              <li class="mt-2 display-4"><strong>Nigeria</strong></li>
+              <li class="mt-2 display-4"><strong class="city-input">Nigeria</strong></li>
               <li>Saturday 9:30</li>
+              <li class="weather">Haze</li>
             </ul>
           </div>
           <div class="col-7">
-            <input
-              type="text"
-              name=""
-              id=""
-              class="w-75"
-              placeholder="Enter City..."
+            <form class="search-form">
+              <input
+                type="text"
+                name=""
+                id="text-input"
+                class="w-75"
+                placeholder="Enter City..."
+              />
+              <input type="submit" value="Search" />
+            </form>
+          </div>
+          <div class="col-6 d-flex">
+            <img
+              src="
+"
+              alt=""
+              srcset=""
             />
-            <input type="submit" value="Search" />
+            <strong class="display-4 temp">17</strong> <span>℃ | ℉</span>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li>😒</li>
-              <li>Cloudy</li>
+              <li>Humidity:<span class="humidity-data">58</span>%</li>
+              <li>Wind: <span class="wind-data">22</span> km/h</li>
             </ul>
           </div>
-          <div class="col-6">nhhh</div>
         </div>
       </div>
       <!-- </div> -->
     </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
