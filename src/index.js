@@ -77,7 +77,7 @@ function getWeather(response) {
   let weatherImage = document.querySelector(".weather-image");
   weatherImage.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   ) 
  console.log(weatherImage);
   cityInput.innerHTML = response.data.city;
