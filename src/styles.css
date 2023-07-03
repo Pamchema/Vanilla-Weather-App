@@ -1,3 +1,9 @@
-.text-decoration-none{
+/* .text-decoration-none{
     text-decoration: none !important;
+} */
+a .celsius-link{
+cursor: default;
+}
+a .celsius-link:hover{
+cursor: default;
 }
