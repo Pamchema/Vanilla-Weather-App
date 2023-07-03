@@ -87,6 +87,7 @@ function getWeather(response) {
   windData.innerHTML = response.data.wind.speed;
   dateElement.innerHTML =formatDate(response.data.
 time*1000) 
+ celsuisTemp = response.data.temperature.current;
 console.log(formatDate(response.data.time *1000));
 console.log(response.data.time)
 }
@@ -99,24 +100,36 @@ function searchWeather(event) {
 
   axios.get(endPoint).then(getWeather);
 }
+function getFahrenheit(event) {
+  event.preventDefault()
+    let temp = document.querySelector(".temp");
+    let fahrenheitTemp = (celsuisTemp * 9) / 5 + 32;
+  temp .innerHTML = fahrenheitTemp
+}
+let  celsuisTemp =null
+
+let fahrenheitLink = document.querySelector(".fahrenheit-link");
+fahrenheitLink.addEventListener("click", getFahrenheit)
 
 let searchForm = document.querySelector(".search-form");
 searchForm.addEventListener("submit", searchWeather);
 console.log(searchForm);
+
+
 // // function currentLocation(event) {
 // //   event.preventDefault();
-function currentLoc(position) {
-  console.log(position.coords.latitude)
-  let apiKey = "f62d01b34c58e90t15caf7a143042b5o";
-   let endPoint = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(endPoint).then(getWeather);
-    console.log(position.coords.latitude);
+// function currentLoc(position) {
+//   console.log(position.coords.latitude)
+//   let apiKey = "f62d01b34c58e90t15caf7a143042b5o";
+//    let endPoint = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+//   axios.get(endPoint).then(getWeather);
+//     console.log(position.coords.latitude);
 
-}
-function  onLoadevent(event) {
-  event.preventDefault();
-   navigator.geolocation.getCurrentPosition(currentLoc);
-}
+// }
+// function  onLoadevent(event) {
+//   event.preventDefault();
+//    navigator.geolocation.getCurrentPosition(currentLoc);
+// }
 
 
 // }
