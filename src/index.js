@@ -100,16 +100,24 @@ function searchWeather(event) {
 
   axios.get(endPoint).then(getWeather);
 }
+function getCelsius(event) {
+ event.preventDefault();
+    let temp = document.querySelector(".temp");
+  temp.innerHTML = Math.round(celsuisTemp);
+}
 function getFahrenheit(event) {
   event.preventDefault()
     let temp = document.querySelector(".temp");
     let fahrenheitTemp = (celsuisTemp * 9) / 5 + 32;
-  temp .innerHTML = fahrenheitTemp
+  temp .innerHTML =  Math.round (fahrenheitTemp)
 }
 let  celsuisTemp =null
 
 let fahrenheitLink = document.querySelector(".fahrenheit-link");
+ let celsiusLink = document.querySelector(".celsius-link")
+ celsiusLink .addEventListener("click", getCelsius)
 fahrenheitLink.addEventListener("click", getFahrenheit)
+
 
 let searchForm = document.querySelector(".search-form");
 searchForm.addEventListener("submit", searchWeather);
