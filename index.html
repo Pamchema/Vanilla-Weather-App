@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+     <link rel="stylesheet" href="src\styles.css" />
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/styles.css" >
+    
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -21,7 +22,7 @@
           <div class="col-5">
             <ul class="list-unstyled">
               <li class="mt-2 display-4 mt-4">
-                <strong class="city-input ">Lagos</strong>
+                <strong class="city-input "></strong>
               </li>
               <li class="date">Saturday 9:30</li>
               <li class="weather">Haze</li>
@@ -29,31 +30,36 @@
           </div>
           <div class="col-7 mt-3">
             <form class="search-form">
+              <div class="d-flex">
               <input
+             
                 type="text"
                 name=""
                 id="text-input"
                 class="w-75"
                 placeholder="Enter City..."
               />
-              <input type="submit" value="Search" />
+              <input class=" btn btn-primary ms-1"  type="submit" value="Search" />
+            </div>
             </form>
           </div>
+           <div class="row">
           <div class="col-6">
             <img
-              src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
+              src=""
             class="mb-3 weather-image"
               alt="weather-Image"
               srcset=""
             />
             <strong class="display-4 temp">17 </strong>
-            <small class="mt-5">   <a href="#" rel="noopener noreferrer" class="text-decoration-none celsius-link mt-5">℃ </a>| <a href="http://" rel="noopener noreferrer" class="text-decoration-none  fahrenheit-link">℉</a> </small>
+            <small class="mt-5 text-start">   <a href="#" rel="noopener noreferrer" class="text-decoration-none celsius-link mt-5">℃ </a>| <a href="http://" rel="noopener noreferrer" class="text-decoration-none  fahrenheit-link">℉</a> </small>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
               <li>Humidity:<span class="humidity-data">58</span>%</li>
               <li>Wind: <span class="wind-data">22</span> km/h</li>
             </ul>
+            </div>
           </div>
         </div>
       </div>

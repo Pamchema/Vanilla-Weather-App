@@ -7,3 +7,6 @@ cursor: default;
 a .celsius-link:hover{
 cursor: default;
 }
+body{
+    background-color:blue;
+}

@@ -90,15 +90,26 @@ time*1000)
  celsuisTemp = response.data.temperature.current;
 console.log(formatDate(response.data.time *1000));
 console.log(response.data.time)
+    console.log(city);
+
+}
+function searchCity(city) {
+  let apiKey = "f62d01b34c58e90t15caf7a143042b5o";
+  // let cityInput = document.querySelector(".city-input");
+  let endPoint = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(endPoint).then(getWeather);
+  // console.log(cityInput);
 }
 function searchWeather(event) {
   event.preventDefault();
   let textInput = document.querySelector("#text-input");
-  let city = textInput.value;
-  let apiKey = "f62d01b34c58e90t15caf7a143042b5o";
-  let endPoint = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  searchCity(textInput.value); 
 
-  axios.get(endPoint).then(getWeather);
+  // console.log(city)
+  // let apiKey = "f62d01b34c58e90t15caf7a143042b5o";
+  // let endPoint = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  // axios.get(endPoint).then(getWeather);
 }
 function getCelsius(event) {
  event.preventDefault();
@@ -123,21 +134,4 @@ let searchForm = document.querySelector(".search-form");
 searchForm.addEventListener("submit", searchWeather);
 console.log(searchForm);
 
-
-// // function currentLocation(event) {
-// //   event.preventDefault();
-// function currentLoc(position) {
-//   console.log(position.coords.latitude)
-//   let apiKey = "f62d01b34c58e90t15caf7a143042b5o";
-//    let endPoint = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-//   axios.get(endPoint).then(getWeather);
-//     console.log(position.coords.latitude);
-
-// }
-// function  onLoadevent(event) {
-//   event.preventDefault();
-//    navigator.geolocation.getCurrentPosition(currentLoc);
-// }
-
-
-// }
+searchCity("Mushin")
