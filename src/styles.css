@@ -10,3 +10,8 @@ cursor: default;
 body{
     background-color:blue;
 }
+.icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

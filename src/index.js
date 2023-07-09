@@ -25,6 +25,7 @@ if (hour < 10) {
 let time = today.getMinutes();
 if (time < 10) {
   time = `0${time}`;
+  
 }
 // console.log(time);
 
@@ -65,6 +66,56 @@ function formatDate (timestamp) {
   return` ${day} ${hours}:${minutes}`
   
 }
+ function formatDailyDate (timestamp){
+let date = new Date(timestamp*1000)
+let days =["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]
+let day =days[date.getDay()]
+return day
+// console.log(formatDailyDate(day));
+
+}
+
+function displayDaily(response) {
+  let dailyForcast = document.querySelector(".daily-forcast");
+  let forcast = `<div class="row">
+`; let dailyTemp = response.data.daily
+console.log(dailyTemp[0].condition.icon);
+// let days = ["Sun", "Mon", "Tue", "W"]
+dailyTemp.forEach(function ( dailyTempDay) {
+  forcast =
+    forcast +
+    `
+      <div class="col-2">
+        <p class="text-center">${formatDailyDate(dailyTempDay.time)}</p>
+        <div class="icon-container">
+          <img
+            // src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${dailyTemp[0].condition.icon}.png"
+            class="m"
+            alt="weather-Image"
+            srcset=""
+            width="50"
+          />
+        </div>
+      </div>
+
+  `;
+});
+    forcast = forcast + `</div>`;
+    dailyForcast.innerHTML = forcast;
+    console.log(response)
+
+}
+
+
+function getCoordinates(coordinates){
+  let lon = coordinates.longitude
+  let lat = coordinates.latitude;
+  let apiKeys = "f62d01b34c58e90t15caf7a143042b5o";
+  let url =`https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKeys}&units=metric`;
+  console.log(url)
+  axios.get(url).then(displayDaily)
+
+}
 
 function getWeather(response) {
   console.log(response);
@@ -73,25 +124,24 @@ function getWeather(response) {
   let temp = document.querySelector(".temp");
   let humidityData = document.querySelector(".humidity-data");
   let windData = document.querySelector(".wind-data");
-  let dateElement = document.querySelector(".date")
+  let dateElement = document.querySelector(".date");
   let weatherImage = document.querySelector(".weather-image");
   weatherImage.setAttribute(
     "src",
     `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
-  ) 
- console.log(weatherImage);
+  );
+  console.log(weatherImage);
   cityInput.innerHTML = response.data.city;
   weatherCondition.innerHTML = response.data.condition.description;
   temp.innerHTML = Math.round(response.data.temperature.current);
   humidityData.innerHTML = response.data.temperature.humidity;
   windData.innerHTML = response.data.wind.speed;
-  dateElement.innerHTML =formatDate(response.data.
-time*1000) 
- celsuisTemp = response.data.temperature.current;
-console.log(formatDate(response.data.time *1000));
-console.log(response.data.time)
-    console.log(city);
-
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
+  celsuisTemp = response.data.temperature.current;
+  console.log(formatDate(response.data.time * 1000));
+  console.log(response.data.time);
+  getCoordinates(response.data.coordinates)
+  console.log(response.data.coordinates.longitude);
 }
 function searchCity(city) {
   let apiKey = "f62d01b34c58e90t15caf7a143042b5o";
