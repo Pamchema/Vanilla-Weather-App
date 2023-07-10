@@ -79,9 +79,10 @@ function displayDaily(response) {
   let dailyForcast = document.querySelector(".daily-forcast");
   let forcast = `<div class="row">
 `; let dailyTemp = response.data.daily
-console.log(dailyTemp[0].condition.icon);
+console.log(dailyTemp[0].condition);
 // let days = ["Sun", "Mon", "Tue", "W"]
-dailyTemp.forEach(function ( dailyTempDay) {
+dailyTemp.forEach(function ( dailyTempDay, index) {
+  if (index < 5) {
   forcast =
     forcast +
     `
@@ -99,6 +100,7 @@ dailyTemp.forEach(function ( dailyTempDay) {
       </div>
 
   `;
+  }
 });
     forcast = forcast + `</div>`;
     dailyForcast.innerHTML = forcast;
