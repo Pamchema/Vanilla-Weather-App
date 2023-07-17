@@ -68,7 +68,7 @@ function formatDate (timestamp) {
 }
  function formatDailyDate (timestamp){
 let date = new Date(timestamp*1000)
-let days =["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]
+let days =["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 let day =days[date.getDay()]
 return day
 // console.log(formatDailyDate(day));
